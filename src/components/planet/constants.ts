@@ -64,14 +64,3 @@ export const planetColorMap: PlanetColorMap = {
     Umbara: { color: '#4CAF50', type: 'forest', svg: 'forest_planet' },     // Forest planet
     Utapau: { color: '#D9B384', type: 'desert', svg: 'desert_planet' },     // Desert world
 };
-
-const PLANET_TYPE_DESERT = 'desert';
-const PLANET_TYPE_FOREST = 'forest';
-const PLANET_TYPE_INDUSTRIAL = 'industrial';
-const PLANET_TYPE_SWAMP = 'swamp';
-const PLANET_TYPE_OCEAN = 'ocean';
-const PLANET_TYPE_ROCKY = 'rocky';
-const PLANET_TYPE_VOLCANIC = 'volcanic';
-const PLANET_TYPE_GAS_GIANT = 'gasGiant';
-const PLANET_TYPE_ICE = 'ice';
-const PLANET_TYPE_CITYSCAPE = 'cityscape';

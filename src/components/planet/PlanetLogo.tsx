@@ -1,5 +1,4 @@
 import React from "react";
-import { SWAPI_BASE_URL } from "@api/constants";
 import { PlanetVisualCharacteristics } from "./constants";
 
 /**
@@ -20,7 +19,7 @@ export const PlanetLogo = ({
 }: {
   planetData: PlanetVisualCharacteristics;
 }) => {
-  const { color, type, svg } = planetData;
+  const { color, svg } = planetData;
 
   if (
     [
@@ -28,13 +27,12 @@ export const PlanetLogo = ({
       "forest_planet",
       "swamp_planet",
       "rocky_planet",
-      "volcanic_planet"
     ].indexOf(svg) > -1
   ) {
     return <Planet1SVG color={color} />;
   }
 
-  if (["industrial_planet", "cityscape_planet"].indexOf(svg) > -1) {
+  if (["industrial_planet", "cityscape_planet", "volcanic_planet"].indexOf(svg) > -1) {
     return <Planet2SVG color={color} />;
   }
 
@@ -45,6 +43,7 @@ export const PlanetLogo = ({
   return <Planet3SVG />;
 };
 
+// Todo: out of scope of demo mvp: move to separate svg files
 const Planet1SVG = ({ color = "white" }) =>
   <svg
     width="64px"
