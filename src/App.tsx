@@ -8,6 +8,8 @@ import {
   StarWarsTitle,
   SwiftlyLogoWrapper
 } from "./components/peopleList/styles";
+import ErrorBoundary from "./components/main/ErrorBoundary";
+import MainTitle from "@components/main/MainTitle";
 
 export const App: FC = () => {
   // Create a client for the app
@@ -15,14 +17,12 @@ export const App: FC = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <StarWarsTitle className="starWarsFont">
-      Star Wars Characters
-        <SwiftlyLogoWrapper>
-          <SwiftlyLogo width="300px" />
-        </SwiftlyLogoWrapper>       
-      </StarWarsTitle>
       <StarParallax />
-      <PeopleList />
+
+      <MainTitle />
+      <ErrorBoundary>
+        <PeopleList />
+      </ErrorBoundary>
     </QueryClientProvider>
   );
 };
