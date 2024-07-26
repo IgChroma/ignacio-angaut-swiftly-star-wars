@@ -108,8 +108,8 @@ const PeopleList: React.FC = () => {
       {isLoading ? <>
         {/* Skeleton ui */}
       <CharacterListContainer>
-        {[...new Array(PAGINATION_SIZE)].map(pageIndex =>      
-          <BracketBoxContainer key={pageIndex}>
+        {[...new Array(PAGINATION_SIZE)].map((zero, pageIndex) =>      
+          <BracketBoxContainer key={"skeleton_"+pageIndex}>
             <BracketBox>
               ...
             </BracketBox>

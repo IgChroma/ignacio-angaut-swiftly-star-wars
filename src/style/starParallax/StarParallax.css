@@ -76,7 +76,7 @@ body {
 
 @font-face {
   font-family: starWarsFont;
-  src: url(../fonts/Starjhol.ttf)
+  src: url(../../assets/fonts/Starjhol.ttf)
 }
 
 .starWarsFont {
