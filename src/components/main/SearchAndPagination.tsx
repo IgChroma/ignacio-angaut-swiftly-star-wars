@@ -1,6 +1,9 @@
 import {
   MainControlsContainer,
-  SearchInput
+  SearchInput,
+  SearchInputContainer,
+  SearchInputWrapper,
+  SearchTitle
 } from "@components/peopleList/styles";
 import React, { useEffect, useMemo, useState } from "react";
 
@@ -33,14 +36,21 @@ export const SearchAndPagination: React.FC<SearchAndPaginationProps> = ({
   };
 
   return (
-    <MainControlsContainer>
-      Search Characters
-      <SearchInput
-        type="text"
-        placeholder="Search by name, homeworld or specie"
-        value={searchQuery}
-        onChange={handleSearch}
-      />
+      <MainControlsContainer>
+          <SearchTitle>
+          Search Characters
+          </SearchTitle>
+     
+      <SearchInputContainer>
+        <SearchInputWrapper>
+          <SearchInput
+            type="text"
+            placeholder="Search by name, homeworld or specie"
+            value={searchQuery}
+            onChange={handleSearch}
+          />
+        </SearchInputWrapper>
+      </SearchInputContainer>
       <div>
         <button disabled={isSearching || page === 0} onClick={setPreviousPage}>
           Previous Page

@@ -50,15 +50,55 @@ export const MainControlsContainer = styled.div`
     box-shadow: 0 0 8px 2px #435c7f, inset 0 0 8px 2px #435c7f;
   }
 `
+
+
+export const SearchTitle = styled.div`
+
+font-size: 1.25rem;
+`
+
+export const SearchInputContainer = styled.div`
+display: flex;
+justify-content: center;
+padding: 12px;
+`
+
+export const SearchInputWrapper = styled.div`
+
+  width: 50%;
+  min-width: 300px;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem 0 1rem;
+  border-radius: 0.5rem;
+  background: ${SWIFTLY_BLUE};
+  box-sizing: border-box;
+
+  i {
+  font-size: 1.5rem;
+  color: white;
+  }
+
+  text-align: center;
+
+}
+`
+
 export const SearchInput = styled.input`
-    font-size: 1.8rem;
-    color: white;
+    font-size: 1rem;
+    color: ${SWIFTLY_BLUE};
     width: 100%;
     height: 100%;
     padding: 0 0 0 1rem;
-    background: tomato;
-    border: none;
+    border-radius: 0.5rem;
+    background:white;
+    border: 1px solid white;
     outline: none;
+      @media (min-width: 400) {
+        font-size: 1.25rem;
+    }
 `
 
 export const EmtpyResultMessage = styled.div`
