@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "ES6",
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "jsx": "react",
+    "paths": {
+      "jquery": [
+        "./vendor/jquery/dist/jquery"
+      ],
+      "@api/*": [
+        "./src/api/*"
+      ]
+    },
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  },
+}
