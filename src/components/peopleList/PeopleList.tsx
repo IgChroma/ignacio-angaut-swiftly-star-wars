@@ -1,5 +1,9 @@
 import React, { useMemo, useState } from "react";
-import { useSWPeople } from "../../hooks/starWars/useSWApi";
+import {
+  usePlanets,
+  useSpecies,
+  useSWPeople
+} from "../../hooks/starWars/useSWApi";
 import { IPeople } from "@api/types";
 import PeopleCard from "../peopleCard/PeopleCard";
 import { PAGINATION_SIZE } from "@api/constants";
@@ -18,6 +22,9 @@ const PeopleList: React.FC = () => {
     paginatedPeople
   } = useSWPeople();
 
+  const { planets, planetsValuesByUrl } = usePlanets();
+  const { species, speciesValuesByUrl } = useSpecies();
+  
   // Pagination logic
   const maxPage = Math.ceil(count / PAGINATION_SIZE);
   const isLastPage = page + 1 >= maxPage;
@@ -27,7 +34,12 @@ const PeopleList: React.FC = () => {
   }
 
   if (error) {
-    return <p>These are not the results you are looking for (jedi wave)... I mean Error loading characters</p>;
+    return (
+      <p>
+        These are not the results you are looking for (jedi wave)... I mean
+        Error loading characters
+      </p>
+    );
   }
 
   let characters: IPeople[];
@@ -45,29 +57,6 @@ const PeopleList: React.FC = () => {
   };
   const handleSearch = (ev: React.ChangeEvent<HTMLInputElement>) =>
     setSearchQuery(ev.target.value);
-
-  // const { characters } = useMemo(
-  //   () => {
-  //     const characters: IPeople[] = people || [];
-  //     // const hasNextPage: boolean = characters.length === PAGINATION_SIZE;
-  //     debugger;
-  //     return { characters };
-  //   },
-  //   [people, page]
-  // );
-
-  // const { characters } = useMemo(
-  //   () => {
-  //     if (people) {
-  //       const characters: IPeople[] = people;
-  //       return { characters };
-  //     }
-  //     return { characters: [] };
-  //   },
-  //   [people]
-  // );
-
-  // const { characters, hasNextPage } = usePagination(people || [], page);
 
   return (
     <div id="starWarsCharactersList">
