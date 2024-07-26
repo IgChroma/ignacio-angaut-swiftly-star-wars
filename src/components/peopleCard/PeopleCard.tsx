@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { PeopleCardProps } from "./types";
 import { hairColorMap } from "./constants";
 import {
@@ -96,7 +95,7 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ character }) => {
             {character.eye_color}
           </PeopleCardItem>
           {starships && starships.length>0 && <PeopleCardItem>
-            Starships: {starships.map(d => <SpaceShipSvg />)}
+            Starships: {starships.map((d) => <SpaceShipSvg key={(d as string)} />)}
           </PeopleCardItem>
           }
         </ShowMoreSection>}

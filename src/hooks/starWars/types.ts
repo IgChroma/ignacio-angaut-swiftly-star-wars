@@ -9,6 +9,7 @@ export type SpeciesUrlMap = {
 }
 
 /** Shared return keys between the 3 SW hooks */
+// eslint-disable-next-line
 interface BaseHookProps<T> {
     isLoading: boolean;
     isError: boolean;

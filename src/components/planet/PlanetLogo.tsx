@@ -22,17 +22,17 @@ export const PlanetLogo = ({
   const { color, svg } = planetData;
 
   if (
-    [
-      "desert_planet",
-      "forest_planet",
-      "swamp_planet",
-      "rocky_planet",
-    ].indexOf(svg) > -1
+    ["desert_planet", "forest_planet", "swamp_planet", "rocky_planet"].indexOf(
+      svg
+    ) > -1
   ) {
     return <Planet1SVG color={color} />;
   }
 
-  if (["industrial_planet", "cityscape_planet", "volcanic_planet"].indexOf(svg) > -1) {
+  if (
+    ["industrial_planet", "cityscape_planet", "volcanic_planet"].indexOf(svg) >
+    -1
+  ) {
     return <Planet2SVG color={color} />;
   }
 
@@ -40,11 +40,11 @@ export const PlanetLogo = ({
     return <Planet3SVG color={color} />;
   }
 
-  return <Planet3SVG />;
+  return <Planet3SVG color="white" />;
 };
 
 // Todo: out of scope of demo mvp: move to separate svg files
-const Planet1SVG = ({ color = "white" }) =>
+const Planet1SVG = ({ color = "white" }: { color: string }) =>
   <svg
     width="64px"
     height="64px"
@@ -74,7 +74,7 @@ const Planet1SVG = ({ color = "white" }) =>
     />
   </svg>;
 
-const Planet2SVG = ({ color = "white" }) => {
+const Planet2SVG = ({ color = "white" }: { color: string }) => {
   return (
     <svg
       width="74px"
@@ -95,7 +95,7 @@ const Planet2SVG = ({ color = "white" }) => {
   );
 };
 
-const Planet3SVG = ({ color = "white" }) => {
+const Planet3SVG = ({ color = "white" }: { color: string }) => {
   return (
     <svg
       width="64px"

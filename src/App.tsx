@@ -1,13 +1,8 @@
-import { SWAPI_BASE_URL } from "@api/constants";
+
 import React, { FC } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import PeopleList from "./components/peopleList/PeopleList";
 import StarParallax from "./style/starParallax/StarsParallax";
-import SwiftlyLogo from "./style/SwiftlyLogo";
-import {
-  StarWarsTitle,
-  SwiftlyLogoWrapper
-} from "./components/peopleList/styles";
 import ErrorBoundary from "./components/main/ErrorBoundary";
 import MainTitle from "@components/main/MainTitle";
 

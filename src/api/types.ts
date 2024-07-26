@@ -1,7 +1,5 @@
 // from the documentation of SWAPI -> https://raw.githubusercontent.com/amitmtrn/swapi-ts/main/src/SWApi.ts
 
-import _ from 'lodash';
-
 export interface IFilm {
   characters: string[] | IPeople[];
   created: Date;

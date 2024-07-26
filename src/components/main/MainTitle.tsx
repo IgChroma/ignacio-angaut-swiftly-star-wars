@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import StarParallax from "@style/starParallax/StarsParallax";
 import SwiftlyLogo from "@style/SwiftlyLogo";
 import {
   StarWarsTitle,
