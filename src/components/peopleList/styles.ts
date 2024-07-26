@@ -5,8 +5,7 @@ export const SWIFTLY_BLUE = "#405c80";
 export const StarWarsTitle = styled.h1`
   color: white;
   font-family: starWarsFont;
-  font-size: 50px;
-
+  font-size: 2rem;
   border-radius: 18px;
   margin-left: auto;
   margin-right: auto;
@@ -16,6 +15,7 @@ export const StarWarsTitle = styled.h1`
             display: flex;
             align-items: center;
             padding: 0 1rem;
+            font-size: 50px;
       }
 
       &:hover {
@@ -65,8 +65,6 @@ padding: 12px;
 
 export const SearchInputWrapper = styled.div`
 
-  width: 50%;
-  min-width: 300px;
   height: 3.5rem;
   display: flex;
   justify-content: center;
@@ -75,14 +73,23 @@ export const SearchInputWrapper = styled.div`
   border-radius: 0.5rem;
   background: ${SWIFTLY_BLUE};
   box-sizing: border-box;
-
-  i {
-  font-size: 1.5rem;
-  color: white;
-  }
-
   text-align: center;
+  width: 40%;
 
+
+    @media only screen and (min-width: 768.1x) and (max-width: 1200px) {
+        width: 75%;
+    }
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      font-size: 1rem;
+    }
+ 
+  i {
+    font-size: 1.5rem;
+    color: white;
+  }
 }
 `
 
@@ -96,8 +103,13 @@ export const SearchInput = styled.input`
     background:white;
     border: 1px solid white;
     outline: none;
-      @media (min-width: 400) {
-        font-size: 1.25rem;
+    @media (min-width: 400) {
+        font-size: 1rem;
+    }
+    text-align: center;
+
+     &::placeholder {
+        color: ${SWIFTLY_BLUE};
     }
 `
 

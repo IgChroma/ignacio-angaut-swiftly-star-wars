@@ -5,7 +5,7 @@ import {
   SearchInputWrapper,
   SearchTitle
 } from "@components/peopleList/styles";
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
 
 interface SearchAndPaginationProps {
   // Could be split on different components ideally (with more time)
@@ -36,11 +36,9 @@ export const SearchAndPagination: React.FC<SearchAndPaginationProps> = ({
   };
 
   return (
-      <MainControlsContainer>
-          <SearchTitle>
-          Search Characters
-          </SearchTitle>
-     
+    <MainControlsContainer>
+      <SearchTitle>Search Characters</SearchTitle>
+
       <SearchInputContainer>
         <SearchInputWrapper>
           <SearchInput

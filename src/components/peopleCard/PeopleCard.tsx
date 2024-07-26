@@ -61,7 +61,7 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ character }) => {
           <PeopleCardItem>Birth Year: {birth_year}</PeopleCardItem>
 
           <PeopleCardItem>       
-            Homeworld: <span style={{color:planetColorMap[homeworldName].color }}>{homeworldName}</span>
+            Homeworld: <span style={{color:planetColorMap[homeworldName]?.color }}>{homeworldName}</span>
             {homeworldName && 
               <PlanetContainer title={homeworldName}>
                 <PlanetLogo planetData={planetColorMap[homeworldName]} />
