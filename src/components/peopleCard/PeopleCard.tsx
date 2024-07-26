@@ -10,6 +10,9 @@ import {
   SciFiPanelContent,
   SciFiPanelHeader
 } from "./styles";
+import { IPlanet } from "@api/types";
+import { PlanetLogo } from "@components/planet/PlanetLogo";
+import { planetColorMap } from "@components/planet/constants";
 
 // const Card = styled.div`
 //   border: 1px solid #ccc;
@@ -56,9 +59,12 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ character }) => {
     films,
     species,
     vehicles,
-    starships
+    starships,
+    homeworld
   } =
     character || {};
+
+  const { name: homeworldName } = (homeworld as IPlanet) || {};
   return (
     <BracketBoxContainer>
       <BracketBox>
@@ -69,6 +75,14 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ character }) => {
           </CardItem>
           <CardItem>
             Mass: {mass}
+          </CardItem>
+
+          <CardItem>
+       
+            Homeworld: {homeworldName}
+            {homeworldName && <>
+              <PlanetLogo planetData={planetColorMap[homeworldName]} />
+            </>}
           </CardItem>
 
           <CardButton>More Details</CardButton>
