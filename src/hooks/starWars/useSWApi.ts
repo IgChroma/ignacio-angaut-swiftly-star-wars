@@ -1,31 +1,11 @@
-import { PAGINATION_SIZE, SWAPI_BASE_URL, SWAPI_PATH, SWAPI_PATHS } from "@api/constants";
-import React, { useEffect, useMemo, useState } from "react";
+import { SWAPI_PATHS } from "@api/constants";
+import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { IPeople, IPlanet, ISpecie } from "@api/types";
-import { PlanetsUrlMap, SpeciesUrlMap, useSWPeopleProps } from "./types";
+import { PlanetsUrlMap, SpeciesUrlMap, UsePlanetsProps, UseSpeciesProps, useSWPeopleProps } from "./types";
+import { getFragments, getSWApiUrl } from "./utils";
 
-
-export const getSWApiUrl = (path: SWAPI_PATH): string => `${SWAPI_BASE_URL}/${path}`;
-
-
-export const getFragments = <T>(fullArray: T[]) => {
-  let pageIndex: number = 0;
-  const paginatedFragments = [];
-  for (let i = 0; i < fullArray.length; i++) {
-    const currentElem: T = fullArray[i];
-    if (i > (((pageIndex + 1) * PAGINATION_SIZE) - 1)) {
-      pageIndex++;
-    }
-    if (paginatedFragments[pageIndex]) {
-      paginatedFragments[pageIndex].push(currentElem)
-    } else {
-      paginatedFragments[pageIndex] = [currentElem]
-    }
-  }
-  return paginatedFragments;
-}
-
-export const usePlanets = () => {
+export const usePlanets = (): UsePlanetsProps => {
   const planetListUrl = getSWApiUrl(SWAPI_PATHS.PLANETS);
   const { isLoading, isError, data = [], error } = useQuery<IPlanet[]>({
     queryKey: ['planets'],
@@ -53,7 +33,7 @@ export const usePlanets = () => {
   }
 };
 
-export const useSpecies = () => {
+export const useSpecies = (): UseSpeciesProps => {
   const planetListUrl = getSWApiUrl(SWAPI_PATHS.SPECIES);
   const { isLoading, isError, data = [], error } = useQuery<ISpecie[]>({
     queryKey: ['species'],

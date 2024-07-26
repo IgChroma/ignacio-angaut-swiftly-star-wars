@@ -16,3 +16,21 @@ export interface useSWPeopleProps {
     count: number;
     paginatedPeople: IPeople[][];
 }
+
+export interface UsePlanetsProps {
+    isLoading: boolean;
+    isError: boolean;
+    error: Error | null;
+    planets: IPlanet[];
+    planetsValuesByUrl: { [key: string]: IPlanet };
+    count: number;
+}
+
+export interface UseSpeciesProps {
+    isLoading: boolean;
+    isError: boolean;
+    error: Error | null;
+    species: ISpecie[];
+    speciesValuesByUrl: { [key: string]: ISpecie };
+    count: number;
+}
