@@ -8,7 +8,7 @@ import {
   EmtpyResultMessage,
 } from "./styles";
 import { BracketBox, BracketBoxContainer } from "@components/peopleCard/styles";
-import SearchAndPagination from "@components/main/SearchAndPagination";
+import SearchAndPagination from "./SearchAndPagination";
 
 const PeopleList: React.FC = () => {
   const [page, setPage] = useState(0);
