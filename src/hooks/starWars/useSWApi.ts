@@ -40,7 +40,6 @@ export const useSpecies = (): UseSpeciesProps => {
     queryFn: async () => await fetch(planetListUrl).then(response => response.json()),
   })
 
-
   const speciesValuesByUrl: SpeciesUrlMap = useMemo(
     () => {
       const specieMap: SpeciesUrlMap = {};
@@ -113,12 +112,9 @@ export const useStarWarsDatabase = () => {
     count: characterCount,
   } = useSWPeople({ splitFragments: false });
 
-
   const { planets, planetsValuesByUrl, count: planetsCount } = usePlanets();
   const { species, speciesValuesByUrl, count: speciesCount } = useSpecies();
-
   const emptyDBValues: boolean = characterCount === 0 || speciesCount === 0 || planetsCount == 0;
-
 
   const populatedPeopleData = useMemo(
     () => !emptyDBValues && populatePeopleData({
@@ -133,8 +129,6 @@ export const useStarWarsDatabase = () => {
     () => !emptyDBValues && populatedPeopleData && getFragments(populatedPeopleData),
     [populatedPeopleData]
   );
-
-
 
   return {
     isLoading,
