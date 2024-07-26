@@ -1,20 +1,14 @@
-import React, { useEffect, useMemo, useState } from "react";
-import {
-  usePlanets,
-  useSpecies,
-  useStarWarsDatabase,
-  useSWPeople
-} from "../../hooks/starWars/useSWApi";
+import React, { useEffect, useState } from "react";
+import {  useStarWarsDatabase} from "../../hooks/starWars/useSWApi";
 import { IPeople, IPlanet, ISpecie } from "@api/types";
 import PeopleCard from "../peopleCard/PeopleCard";
 import { PAGINATION_SIZE } from "@api/constants";
 import {
   CharacterListContainer,
   EmtpyResultMessage,
-  MainControlsContainer,
-  SearchInput
 } from "./styles";
 import { BracketBox, BracketBoxContainer } from "@components/peopleCard/styles";
+import SearchAndPagination from "@components/main/SearchAndPagination";
 
 const PeopleList: React.FC = () => {
   const [page, setPage] = useState(0);
@@ -28,9 +22,7 @@ const PeopleList: React.FC = () => {
     errorLoadingCharacters
   } = useStarWarsDatabase();
 
-  // Pagination logic
   const maxPage = fullCharacterList ? Math.ceil(fullCharacterList.length / PAGINATION_SIZE) : 0;
-  const isLastPage = page + 1 >= maxPage;
   const isSearching = searchQuery?.trim().length > 0;
 
   if (errorLoadingCharacters) {
@@ -93,12 +85,6 @@ const PeopleList: React.FC = () => {
     characters = (paginatedPeople && paginatedPeople[page]) || [];
   }
 
-  const setPreviousPage = () => {
-    if (page > 0) setPage(page - 1);
-  };
-  const setNextPage = () => {
-    if (!isLastPage) setPage(page + 1);
-  };
   const handleSearch = (ev: React.ChangeEvent<HTMLInputElement>) =>
     setSearchQuery(ev.target.value);
 
@@ -106,25 +92,19 @@ const PeopleList: React.FC = () => {
 
   return (
     <div id="starWarsCharactersList">
-      <MainControlsContainer>
-        Search Characters
-        <SearchInput
-          type="text"
-          placeholder="Search by name, homeworld or specie"
-          value={searchQuery}
-          onChange={handleSearch}
-        />
-        <div>
-          <button disabled={isSearching ||page === 0} onClick={setPreviousPage}>
-            Previous Page
-          </button>
-          Page [{searchQuery ? 1 : page + 1} / {searchQuery ? 1 : maxPage}]
-          <button disabled={isSearching || isLastPage} onClick={setNextPage}>
-            Next Page
-          </button>
-        </div>
-      </MainControlsContainer>
+   
+      {/* 1: Controllers: */}
+   <SearchAndPagination
+        searchQuery={searchQuery}
+        handleSearch={handleSearch}
+        isSearching={isSearching}      
+        setPage={setPage}
+        page={page}
+        maxPage={maxPage}
+      />
     
+      {/* 2: Character grid results: */}
+
       {isLoading ? <>
         {/* Skeleton ui */}
       <CharacterListContainer>
