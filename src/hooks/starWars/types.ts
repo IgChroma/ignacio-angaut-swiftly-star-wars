@@ -28,5 +28,12 @@ export interface UseSpeciesProps extends BaseHookProps<ISpecie> {
 
 export interface UseSWPeopleProps extends BaseHookProps<IPeople> {
     people?: IPeople[];
-    paginatedPeople: IPeople[][];
+    paginatedPeople: IPeople[][] | null;
+}
+
+
+export interface PopulatePeopleDataProps {
+    rawPeopleData: IPeople[];
+    speciesValuesByUrl: { [key: string]: ISpecie };
+    planetsValuesByUrl: { [key: string]: IPlanet };
 }
