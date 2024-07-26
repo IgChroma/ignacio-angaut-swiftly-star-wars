@@ -1,27 +1,6 @@
 import styled from 'styled-components';
 
 
-// const CharacterList = styled.ul`
-//   list-style: none;
-//   padding: 0;
-//   margin: 0;
-// `;
-
-// const CharacterItem = styled.li`
-//   margin-bottom: 1rem;
-// `;
-
-// const CharacterName = styled.h3`
-//   font-weight: bold;
-//   margin-bottom: 0.5rem;
-// `;
-
-// const CharacterDetails = styled.p`
-//   font-size: 0.8rem;
-//   color: gray;
-// `;
-
-
 export const SWIFTLY_BLUE = "#405c80";
 export const StarWarsTitle = styled.h1`
   color: white;

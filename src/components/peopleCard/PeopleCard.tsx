@@ -10,9 +10,10 @@ import {
   SciFiPanelContent,
   SciFiPanelHeader
 } from "./styles";
-import { IPlanet } from "@api/types";
+import { IPlanet, ISpecie } from "@api/types";
 import { PlanetLogo } from "@components/planet/PlanetLogo";
 import { planetColorMap } from "@components/planet/constants";
+import SpecieSubHeader from "./SpecieSubHeader";
 
 // const Card = styled.div`
 //   border: 1px solid #ccc;
@@ -57,18 +58,26 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ character }) => {
     birth_year,
     gender,
     films,
-    species,
+    species = [],
     vehicles,
     starships,
     homeworld
   } =
     character || {};
 
-  const { name: homeworldName } = (homeworld as IPlanet) || {};
+    const { name: homeworldName } = (homeworld as IPlanet) || {};
+
+  
+  const specieNames = (species as ISpecie[])?.map(specie => specie?.name);
+
+
   return (
     <BracketBoxContainer>
       <BracketBox>
         <SciFiPanelHeader title={`Name: ${name}`}>{name}</SciFiPanelHeader>
+        
+        <SpecieSubHeader specieNames={specieNames}></SpecieSubHeader>
+
         <div>
           <CardItem>
             Height: {height}
@@ -78,6 +87,8 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ character }) => {
           </CardItem>
 
           <CardItem>
+
+         
        
             Homeworld: {homeworldName}
             {homeworldName && <>

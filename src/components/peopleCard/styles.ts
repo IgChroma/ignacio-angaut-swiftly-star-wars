@@ -35,7 +35,25 @@ export const SciFiPanelHeader = styled.h2`
   margin: 8px;
   padding: 5px;
   order: 1;
+`;
+
+export const SpecieSubHeaderDiv = styled.h2`
+  text-decoration: none;
+  color: rgba(192, 251, 63, 0.75);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.95);
+  background: linear-gradient(90deg, transparent, ${SWIFTLY_BLUE}, transparent);
+  text-align: center;
+  text-transform: capitalize;
+  margin: 4px 8px;
+  opacity: 0.9;
+  padding: 2px;
+  order: 1;
   transition: outline 2s;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
 `;
 
 export const SciFiPanelContent = styled.div`
