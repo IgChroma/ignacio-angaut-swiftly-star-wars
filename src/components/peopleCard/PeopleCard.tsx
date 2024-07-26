@@ -6,19 +6,17 @@ import {
   BracketBox,
   BracketBoxContainer,
   CardButton,
-  SciFiPanel,
-  SciFiPanelContent,
   SciFiPanelHeader,
   PeopleCardItem,
   ApperanceDotIndicator,
-  PlanetContainer
+  PlanetContainer,
+  ShowMoreSection
 } from "./styles";
 import { IPlanet, ISpecie } from "@api/types";
 import { PlanetLogo } from "@components/planet/PlanetLogo";
 import { planetColorMap } from "@components/planet/constants";
 import SpecieSubHeader from "./SpecieSubHeader";
 import { SpaceShipSvg } from "./SpecieIcons";
-import { SWAPI_BASE_URL } from "@api/constants";
 
 // Note, this are not only people but robots or aliens as well
 // We should initiate a request for product to redefine this entity and reflect it in a code iteration
@@ -32,9 +30,7 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ character }) => {
     eye_color,
     birth_year,
     gender,
-    films,
     species = [],
-    vehicles,
     starships,
     homeworld
   } =
@@ -51,7 +47,7 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ character }) => {
     <BracketBoxContainer>
       <BracketBox>
         <SciFiPanelHeader title={`Name: ${name}`}>{name}</SciFiPanelHeader>
-        
+
         <SpecieSubHeader specieNames={specieNames}></SpecieSubHeader>
 
         <div>
@@ -61,11 +57,11 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ character }) => {
             Mass: {mass !== "unknown" ? `${mass}kg`: mass}
           <PeopleCardItem>
           </PeopleCardItem>
-          <PeopleCardItem>Gender: {character.gender}</PeopleCardItem>
+          <PeopleCardItem>Gender: {gender}</PeopleCardItem>
           <PeopleCardItem>Birth Year: {birth_year}</PeopleCardItem>
 
           <PeopleCardItem>       
-            Homeworld: {homeworldName}
+            Homeworld: <span style={{color:planetColorMap[homeworldName].color }}>{homeworldName}</span>
             {homeworldName && 
               <PlanetContainer title={homeworldName}>
                 <PlanetLogo planetData={planetColorMap[homeworldName]} />
@@ -76,8 +72,8 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ character }) => {
           <CardButton onClick={()=>setShowMore(!showMore)}>More Details</CardButton>
         </div>
 
-        {showMore && <>
-          More Details:
+        {showMore && <ShowMoreSection>
+          Extended Details:
           <PeopleCardItem>
             Hair Color:
             <ApperanceDotIndicator style={{               
@@ -103,7 +99,7 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ character }) => {
             Starships: {starships.map(d => <SpaceShipSvg />)}
           </PeopleCardItem>
           }
-        </>}
+        </ShowMoreSection>}
     
 
       </BracketBox>

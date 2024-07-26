@@ -20,7 +20,7 @@ const tiltAnimation = keyframes`
 `;
 
 export const ShowMoreSection = styled.div`
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-size: small;
 `;
 
@@ -46,29 +46,6 @@ export const PlanetContainer = styled.div`
   animation: ${tiltAnimation} 5s infinite;
 `
 
-export const SciFiPanel = styled.div`
-  position: relative;
-  width: 100%;
-  height: 160px;
-  color: #fff;
-  text-align: center;
-  background: rgba(0, 127, 128, 0.68);
-  box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.5);
-  border: 1px solid rgba(128, 255, 255, 0.25);
-  cursor: default;
-  user-select: none;
-  display: flex;
-  flex-direction: column;
-  resize: both;
-  overflow: auto;
-
-  &:hover {
-    box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.75);
-    border: 1px solid rgba(128, 255, 255, 0.75);
-  }
-
-`;
-
 export const SciFiPanelHeader = styled.h2`
   text-decoration: none;
   color: rgba(255, 255, 255, 0.75);
@@ -89,7 +66,7 @@ export const SpecieSubHeaderDiv = styled.h2`
   background: linear-gradient(90deg, transparent, ${SWIFTLY_BLUE}, transparent);
   text-align: center;
   text-transform: capitalize;
-  margin: 4px 8px;
+  margin: 4px 8px 12px;
   opacity: 0.9;
   padding: 2px;
   order: 1;
@@ -99,33 +76,6 @@ export const SpecieSubHeaderDiv = styled.h2`
   align-items: center;
   justify-content: center;
   vertical-align: middle;
-`;
-
-export const SciFiPanelContent = styled.div`
-  background: rgba(0, 127, 128, 0.68);
-  border: 1px solid rgba(128, 255, 255, 0.25);
-  color: rgba(128, 255, 255, 0.75);
-  text-align: left;
-  margin: 0px 8px 8px 8px;
-  order: 2;
-  overflow: auto;
-  height: 100%;
-  padding: 5px;
-
-  /* Scrollbar styles */
-  ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-  }
-
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.3);
-  }
 `;
 
 export const CardButton = styled.button`
@@ -142,7 +92,6 @@ box-shadow: 0 0 8px 2px red), inset 0 0 8px 2px red;
 cursor: pointer;
 `;
 
-const themecolorBlue = "darkblue";
 export const BracketBoxContainer = styled.div`
 
   flex: 1 0 25%;
@@ -156,10 +105,7 @@ export const BracketBoxContainer = styled.div`
   position: relative;
   background-color: transparent;
   overflow: hidden;
-  /*box-shadow: 0 0 8px 2px ${themecolorBlue},
-    inset 0 0 8px 2px ${themecolorBlue};*/
   box-shadow: 0 0 8px 2px #435c7f, inset 0 0 8px 2px #435c7f;
-    
 
   ::before,
   ::after {
@@ -187,11 +133,11 @@ export const BracketBoxContainer = styled.div`
   }
 
     /* Logic for the flexbox since we are not using any other library or toolkit for the grid layout*/
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 500px) {
         flex: 1 0 calc(100% - 4rem);
     }
 
-    @media only screen and (min-width: 480.1x) and (max-width: 768px) {
+    @media only screen and (min-width: 500.1x) and (max-width: 768px) {
         flex: 1 0 50%;
     }
 
