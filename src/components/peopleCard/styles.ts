@@ -1,5 +1,50 @@
-import styled from 'styled-components';
+import styled,  { keyframes } from 'styled-components';
 import { SWIFTLY_BLUE } from '../peopleList/styles';
+
+const tiltAnimation = keyframes`
+  0% {
+    transform: rotateX(0deg);
+  }
+  25% {
+    transform: rotateX(5deg);
+  }
+  50% {
+    transform: rotateX(0deg);
+  }
+  75% {
+    transform: rotateX(-5deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+`;
+
+export const ShowMoreSection = styled.div`
+  margin-top: 2rem;
+  font-size: small;
+`;
+
+export const PeopleCardItem = styled.div`
+flex: 1 0 200px;
+  vertical-align: middle;
+`;
+
+export const ApperanceDotIndicator = styled.div`
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 4px;
+ `;
+
+export const PlanetContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  height: 64px;
+  animation: ${tiltAnimation} 5s infinite;
+`
 
 export const SciFiPanel = styled.div`
   position: relative;
@@ -87,18 +132,17 @@ export const CardButton = styled.button`
 font-size: 0.75em;
 letter-spacing: 0.05em;
 text-transform: uppercase;
-color: var(--blue-900);
+color: white;
 margin-top: 0.5rem;
 padding: 0.5em 1em;
-border: 1px solid var(--blue-900);
+border: 1px solid white;
 border-radius: 4px;
-background-color: var(--blue-900-a03);
-box-shadow: 0 0 8px 2px var(--blue-900-a05), inset 0 0 8px 2px var(--blue-900-a05);
+background-color: transparent;
+box-shadow: 0 0 8px 2px red), inset 0 0 8px 2px red;
 cursor: pointer;
 `;
 
 const themecolorBlue = "darkblue";
-
 export const BracketBoxContainer = styled.div`
 
   flex: 1 0 25%;

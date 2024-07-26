@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import {
   usePlanets,
   useSpecies,
+  useStarWarsDatabase,
   useSWPeople
 } from "../../hooks/starWars/useSWApi";
 import { IPeople } from "@api/types";
@@ -14,17 +15,15 @@ const PeopleList: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   // Data queries from custom hooks
-  const {
-    isLoading,
-    error,
-    people = [],
-    count,
-    paginatedPeople
-  } = useSWPeople();
+  const { isLoading, error, people = [], count } = useSWPeople({
+    splitFragments: true
+  });
 
   const { planets, planetsValuesByUrl } = usePlanets();
   const { species, speciesValuesByUrl } = useSpecies();
-  
+
+  const { paginatedPeople } = useStarWarsDatabase();
+
   // Pagination logic
   const maxPage = Math.ceil(count / PAGINATION_SIZE);
   const isLastPage = page + 1 >= maxPage;
@@ -47,7 +46,10 @@ const PeopleList: React.FC = () => {
   if (!searchQuery) {
     characters = people;
   }
-  characters = paginatedPeople[page];
+
+  console.log(paginatedPeople);
+
+  characters = (paginatedPeople && paginatedPeople[page]) || [];
 
   const setPreviousPage = () => {
     if (page > 0) setPage(page - 1);

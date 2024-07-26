@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { PeopleCardProps } from "./types";
 import { hairColorMap } from "./constants";
@@ -8,42 +8,17 @@ import {
   CardButton,
   SciFiPanel,
   SciFiPanelContent,
-  SciFiPanelHeader
+  SciFiPanelHeader,
+  PeopleCardItem,
+  ApperanceDotIndicator,
+  PlanetContainer
 } from "./styles";
 import { IPlanet, ISpecie } from "@api/types";
 import { PlanetLogo } from "@components/planet/PlanetLogo";
 import { planetColorMap } from "@components/planet/constants";
 import SpecieSubHeader from "./SpecieSubHeader";
-
-// const Card = styled.div`
-//   border: 1px solid #ccc;
-//   padding: 1rem;
-//   margin-bottom: 1rem;
-// `;
-
-const Card = styled.div`
-  flex: 1 0 auto;
-  padding: 1rem;
-  background-color: lightgray;
-  border: 1px solid gray;
-  z-index: 9;
-  color: black;
-  border-radius: 1rem;
-  @media (min-width: 768px) {
-    /* Adjust breakpoint as needed */
-    flex: 0 0 25%; /* Adjust width for larger screens */
-  }
-`;
-
-const CardTitle = styled.h2`text-align: center;`;
-
-const CardContent = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-`;
-
-const CardItem = styled.div`flex: 1 0 200px;`;
+import { SpaceShipSvg } from "./SpecieIcons";
+import { SWAPI_BASE_URL } from "@api/constants";
 
 // Note, this are not only people but robots or aliens as well
 // We should initiate a request for product to redefine this entity and reflect it in a code iteration
@@ -67,6 +42,7 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ character }) => {
 
     const { name: homeworldName } = (homeworld as IPlanet) || {};
 
+  const [showMore, setShowMore] = useState(false);
   
   const specieNames = (species as ISpecie[])?.map(specie => specie?.name);
 
@@ -79,83 +55,57 @@ const PeopleCard: React.FC<PeopleCardProps> = ({ character }) => {
         <SpecieSubHeader specieNames={specieNames}></SpecieSubHeader>
 
         <div>
-          <CardItem>
-            Height: {height}
-          </CardItem>
-          <CardItem>
-            Mass: {mass}
-          </CardItem>
+          <PeopleCardItem>
+            Height: {height !== "unknown" ? `${height}cm`: height}
+          </PeopleCardItem>
+            Mass: {mass !== "unknown" ? `${mass}kg`: mass}
+          <PeopleCardItem>
+          </PeopleCardItem>
+          <PeopleCardItem>Gender: {character.gender}</PeopleCardItem>
+          <PeopleCardItem>Birth Year: {birth_year}</PeopleCardItem>
 
-          <CardItem>
-
-         
-       
+          <PeopleCardItem>       
             Homeworld: {homeworldName}
-            {homeworldName && <>
-              <PlanetLogo planetData={planetColorMap[homeworldName]} />
-            </>}
-          </CardItem>
+            {homeworldName && 
+              <PlanetContainer title={homeworldName}>
+                <PlanetLogo planetData={planetColorMap[homeworldName]} />
+              </PlanetContainer>
+            }
+          </PeopleCardItem>
 
-          <CardButton>More Details</CardButton>
-          <CardItem>
-            Hair Color:
-            <div
-              style={{
-                height: 16,
-                width: 16,
-                display: "inline-block",
-                borderRadius: "50%",
-                backgroundColor: hairColorMap[hair_color]
-              }}
-            />
-            {hair_color}
-          </CardItem>
-          <CardItem>
-            Skin Color:{" "}
-            <div
-              style={{
-                height: 16,
-                width: 16,
-                display: "inline-block",
-                borderRadius: "50%",
-                backgroundColor: character.skin_color || "transparent"
-              }}
-            />{" "}
-            {character.skin_color}
-          </CardItem>
-          <CardItem>
-            Eye Color:
-            <div
-              style={{
-                height: 16,
-                width: 16,
-                display: "inline-block",
-                borderRadius: "50%",
-                backgroundColor: character.eye_color || "transparent"
-              }}
-            />
-            {character.eye_color}
-          </CardItem>
-          <CardItem>
-            Birth Year: {character.birth_year}
-          </CardItem>
-
-          {/* Add more card items as needed */}
+          <CardButton onClick={()=>setShowMore(!showMore)}>More Details</CardButton>
         </div>
-        More Details:
-        <CardItem>Gender: {character.gender}</CardItem>
-        <CardItem>Height: {character.height}cm.</CardItem>
-        <CardItem>Mass: {character.mass}kg</CardItem>
-        <CardItem>Hair Color: {character.hair_color}</CardItem>
-        <CardItem>Skin Color: {character.skin_color}</CardItem>
-        <CardItem>Eye Color: {character.eye_color}</CardItem>
-        <CardItem>Birth Year: {character.birth_year}</CardItem>
-        <CardItem>Gender: {character.gender}</CardItem>
-        <CardItem>Films: {character.films.join(", ")}</CardItem>
-        <CardItem>Species: {character.species.join(", ")}</CardItem>
-        <CardItem>Vehicles: {character.vehicles.join(", ")}</CardItem>
-        <CardItem>Starships: {character.starships.join(", ")}</CardItem>
-        <CardItem>URL: {character.url}</CardItem>
+
+        {showMore && <>
+          More Details:
+          <PeopleCardItem>
+            Hair Color:
+            <ApperanceDotIndicator style={{               
+               backgroundColor: hairColorMap[hair_color]
+             }}/>      
+            {hair_color}
+          </PeopleCardItem>
+          <PeopleCardItem>
+            Skin Color:{" "}
+          <ApperanceDotIndicator style={{               
+               backgroundColor: skin_color || "transparent"
+            }} />            
+            {character.skin_color}
+          </PeopleCardItem>
+          <PeopleCardItem>
+            Eye Color:
+            <ApperanceDotIndicator style={{               
+               backgroundColor: eye_color || "transparent"
+            }} />
+            {character.eye_color}
+          </PeopleCardItem>
+          {starships && starships.length>0 && <PeopleCardItem>
+            Starships: {starships.map(d => <SpaceShipSvg />)}
+          </PeopleCardItem>
+          }
+        </>}
+    
+
       </BracketBox>
     </BracketBoxContainer>
   );
