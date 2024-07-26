@@ -8,29 +8,25 @@ export type SpeciesUrlMap = {
     [key: string]: ISpecie
 }
 
-export interface useSWPeopleProps {
-    isLoading: boolean | null;
-    isError: boolean | null;
-    error: Error | null;
-    people?: IPeople[];
-    count: number;
-    paginatedPeople: IPeople[][];
-}
-
-export interface UsePlanetsProps {
+/** Shared return keys between the 3 SW hooks */
+interface BaseHookProps<T> {
     isLoading: boolean;
     isError: boolean;
     error: Error | null;
+    count: number;
+}
+
+export interface UsePlanetsProps extends BaseHookProps<IPlanet> {
     planets: IPlanet[];
     planetsValuesByUrl: { [key: string]: IPlanet };
-    count: number;
 }
 
-export interface UseSpeciesProps {
-    isLoading: boolean;
-    isError: boolean;
-    error: Error | null;
+export interface UseSpeciesProps extends BaseHookProps<ISpecie> {
     species: ISpecie[];
     speciesValuesByUrl: { [key: string]: ISpecie };
-    count: number;
+}
+
+export interface UseSWPeopleProps extends BaseHookProps<IPeople> {
+    people?: IPeople[];
+    paginatedPeople: IPeople[][];
 }
