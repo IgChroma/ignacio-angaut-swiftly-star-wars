@@ -9,6 +9,17 @@ npm start
 ```
 Then navigate to http://localhost:1234/
 
+# Notes
+Added swapi hooks for better reusability
+Fully in react, typescript, using Parcel to run and deploy
+Added use memo for performance
+Added lint 
+I focused on a real star wars experience with multiple planets and star ambient
+Sci FI UI
+
+I wanted to add jest, react testing library to add some coverage but ran out of time for this quick demo
+Been using jest, RTL, enzyme for UTs as well as webdriver.io or selenium for integration tests
+
 
 
 # Project Overview:
