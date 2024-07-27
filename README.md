@@ -22,8 +22,6 @@ Been using jest, RTL, enzyme for UTs as well as webdriver.io or selenium for int
 
 # Live demo
 App is deployed here https://igchroma.github.io/ignacio-angaut-swiftly-star-wars/
-Now that its live i wanted to remove a highlight on the textfield but will be a future improvement on next iteration
-
 
 # Project Overview:
 Welcome to our take home interview task! We're excited to see your skills in action. Your

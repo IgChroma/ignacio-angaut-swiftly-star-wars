@@ -107,10 +107,6 @@ export const NavigationButton = styled.button`
  color: #4f4f4f;
   cursor: default;
 }
-
-&:focus {
-  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
-}
 `
 
 
@@ -152,8 +148,8 @@ export const SearchInput = styled.input`
     color: ${SWIFTLY_BLUE};
     width: 100%;
     padding: 0 0 0 1rem;
-    background:white;
-    border: 1px solid white;
+    background: white;
+    border: 0;
     outline: none;
     @media (min-width: 400) {
         font-size: 1rem;
