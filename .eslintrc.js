@@ -2,10 +2,15 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     plugins: ['@typescript-eslint'],
     extends: [
-      'plugin:@typescript-eslint/recommended',
-      'plugin:react/recommended',
-  
+        'plugin:@typescript-eslint/recommended',
+        'plugin:react/recommended',
+
     ],
     rules: {
     },
-  };
+    settings: {
+        react: {
+            version: 'detect'
+        }
+    }
+};
