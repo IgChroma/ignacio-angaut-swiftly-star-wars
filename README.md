@@ -20,6 +20,9 @@ Sci FI UI
 I wanted to add jest, react testing library to add some coverage but ran out of time for this quick demo
 Been using jest, RTL, enzyme for UTs as well as webdriver.io or selenium for integration tests
 
+# Live demo
+App is deployed here https://igchroma.github.io/ignacio-angaut-swiftly-star-wars/
+Now that its live i wanted to remove a highlight on the textfield but will be a future improvement on next iteration
 
 
 # Project Overview:
