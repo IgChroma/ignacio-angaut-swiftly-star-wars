@@ -8,7 +8,7 @@ import {
 export const MainTitle: FC = () => {
   return (
     <StarWarsTitle className="starWarsFont">
-      Star Wars Characters
+      Star Wars Challenge
       <SwiftlyLogoWrapper>
         <SwiftlyLogo width="300px" />
       </SwiftlyLogoWrapper>

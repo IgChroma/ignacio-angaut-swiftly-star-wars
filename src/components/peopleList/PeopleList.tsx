@@ -97,6 +97,7 @@ const PeopleList: React.FC = () => {
    <SearchAndPagination
         searchQuery={searchQuery}
         handleSearch={handleSearch}
+        setSearchQuery={setSearchQuery}
         isSearching={isSearching}      
         setPage={setPage}
         page={page}

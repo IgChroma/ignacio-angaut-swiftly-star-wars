@@ -63,6 +63,9 @@ justify-content: center;
 padding: 12px;
 `
 
+export const SearchIconContainer = styled.div`opacity: 0.7;`
+export const DeleteIconContainer = styled.div`opacity: 0.6; cursor:pointer`;
+
 export const SearchInputWrapper = styled.div`
 
   height: 3.5rem;
@@ -71,7 +74,7 @@ export const SearchInputWrapper = styled.div`
   align-items: center;
   padding: 0 1rem 0 1rem;
   border-radius: 0.5rem;
-  background: ${SWIFTLY_BLUE};
+  background:white;
   box-sizing: border-box;
   text-align: center;
   width: 40%;
@@ -97,9 +100,7 @@ export const SearchInput = styled.input`
     font-size: 1rem;
     color: ${SWIFTLY_BLUE};
     width: 100%;
-    height: 100%;
     padding: 0 0 0 1rem;
-    border-radius: 0.5rem;
     background:white;
     border: 1px solid white;
     outline: none;
