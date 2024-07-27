@@ -1,8 +1,11 @@
 import { DeleteIcon } from "@components/Icons/DeleteIcon";
+import { PaginationPlayIcon } from "@components/Icons/PaginationPlayIcon";
 import { SearchIcon } from "@components/Icons/SerachIcon";
 import {
   DeleteIconContainer,
   MainControlsContainer,
+  NavigationButton,
+  PaginationContainer,
   SearchIconContainer,
   SearchInput,
   SearchInputContainer,
@@ -43,6 +46,9 @@ export const SearchAndPagination: React.FC<SearchAndPaginationProps> = ({
     if (!isLastPage) setPage(page + 1);
   };
 
+  const disabledPrevious = isSearching || page === 0;
+  const disabledNext = isSearching || isLastPage;
+
   return (
     <MainControlsContainer>
       <SearchTitle>Search Characters:</SearchTitle>
@@ -68,15 +74,21 @@ export const SearchAndPagination: React.FC<SearchAndPaginationProps> = ({
 
         </SearchInputWrapper>
       </SearchInputContainer>
-      <div>
-        <button disabled={isSearching || page === 0} onClick={setPreviousPage}>
+
+      <PaginationContainer>
+        <NavigationButton disabled={disabledPrevious} onClick={setPreviousPage}>
+          <PaginationPlayIcon rotated={true} isDisabled={disabledPrevious} />
           Previous Page
-        </button>
+        
+        </NavigationButton>
+
         Page [{searchQuery ? 1 : page + 1} / {searchQuery ? 1 : maxPage}]
-        <button disabled={isSearching || isLastPage} onClick={setNextPage}>
+
+        <NavigationButton disabled={disabledNext} onClick={setNextPage}>
           Next Page
-        </button>
-      </div>
+          <PaginationPlayIcon isDisabled={disabledNext} rotated={false}/>
+        </NavigationButton>
+      </PaginationContainer>
     </MainControlsContainer>
   );
 };
