@@ -2,7 +2,9 @@
   "scripts": {
     "start": "parcel serve ./src/index.html --no-cache",
     "lint": "npx eslint src",
-    "build": "rm -rf dist && parcel build ./src/index.html && open ./dist/index.html"
+    "build": "npx parcel build ./src/index.html --public-url ./",
+    "build2": "rm -rf dist && parcel build ./src/index.html && open ./dist/index.html",
+    "publish": "npx push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.51.11",
