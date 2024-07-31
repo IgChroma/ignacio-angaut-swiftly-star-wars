@@ -71,6 +71,12 @@ body {
 #stars, #stars2, #stars3 {
   pointer-events: none;
   z-index: 8;
+  position: absolute;
+}
+
+.starrParallaxContainer{
+  left: calc(33% - 540px);
+  position: fixed;
 }
 
 
