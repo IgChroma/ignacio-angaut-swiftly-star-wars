@@ -14,12 +14,11 @@ Added swapi hooks for better reusability
 Fully in react, typescript, using Parcel to run and deploy
 Added use memo for performance
 Added lint 
-I focused on a real star wars experience with multiple planets and star ambient
+I focused on a real star wars experience with multiple planets and star ambient (and star wars font!)
 Sci FI UI
-
 I wanted to add jest, react testing library to add some coverage but ran out of time for this quick demo
 Been using jest, RTL, enzyme for UTs as well as webdriver.io or selenium for integration tests
-
+Added Error boundary with an easter egg
 # Live demo
 App is deployed here https://igchroma.github.io/ignacio-angaut-swiftly-star-wars/
 
@@ -63,3 +62,12 @@ instance of the site if deployed.
 
 ● Consider scalability and maintainability when structuring your code.
 ● Have fun and showcase your skills! We look forward to seeing your solution.
+
+# Example Screenshot
+![image](https://github.com/user-attachments/assets/e96809da-c279-4f21-9584-c8e70db576cf)
+
+# Error boundary (easter egg/cool factor)
+
+![image](https://github.com/user-attachments/assets/e9d31abf-678d-4cfb-b0bc-c602a0790582)
+
+
